@@ -19,35 +19,35 @@ Rinominare la cartella css che si trova nella cartella resources/ in scss
 Rinominare il file app.css che si trova nella nuova cartella resources/scss in app.scss
 Modificare il file vite.config.js:
 Cambiare la sezione laravel(...) in:
-laravel({
-input: [
-'resources/scss/app.scss',
-'resources/js/app.js'
-],
-refresh: true
-})
+    laravel({
+        input: [
+            'resources/scss/app.scss',
+            'resources/js/app.js'
+        ],
+        refresh: true
+    })
 per includere i file resources/scss/app.scss e resources/js/app.js nella compilazione (npm run dev/build)
 Aggiungere la sezione:
-resolve: {
-alias: {
-'~resources': '/resources/',
-}
-},
+    resolve: {
+        alias: {
+            '~resources': '/resources/',
+        }
+    },
 dopo la sezione plugins: [...] per creare un alias della cartella /resources/ (evitandoci di doverla richiamare in questo modo tutte le volte)
 Aggiungere la riga import '~resources/scss/app.scss'; nel file resources/js/app.js per importare tramite JS il file SCSS principale
 Aggiungere la direttiva @vite('resources/js/app.js') nella sezione <head> del file resources/views/welcome.blade.php per includere gli asset nella view
 Aggiungere le righe:
-import.meta.glob([
-'../img/**'
-]);
+    import.meta.glob([
+        '../img/**'
+    ]);
 nel file resources/js/app.js per istruire Vite e Blade affinché processino correttamente i nostri asset
 Aggiungere la riga package-lock.json nel file .gitignore che si trova nella root del progetto per evitare di pubblicarlo nella repo (è un file che viene generato ed aggiornato automaticamente dopo l'esecuzione del comando npm i)
 Installare Bootstrap:
 Eseguire il comando npm i --save bootstrap @popperjs/core per installare sia la parte CSS che la parte JS di Bootstrap
 Aggiungere la riga import path from path nel file vite.config.js
-Aggiungere la riga '~bootstrap': path.resolve(\_\_dirname, 'node_modules/bootstrap') nell'oggetto resolve.alias nel file vite.config.js
+Aggiungere la riga '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap') nell'oggetto resolve.alias nel file vite.config.js
 Aggiungere la riga @import "~bootstrap/scss/bootstrap"; in alto nel file resources/scss/app.scss per importare la parte CSS di Bootstrap
-Aggiungere la riga import \* as bootstrap from 'bootstrap'; nel file resources/js/app.js per importare la parte JS di Bootstrap
+Aggiungere la riga import * as bootstrap from 'bootstrap'; nel file resources/js/app.js per importare la parte JS di Bootstrap
 Passi da effettuare per UTILIZZARE questo template
 Aprire questa repository su github e cliccare sul pulsante Use this template > Create a new repository
 Clonare la repository appena creata su VS Code
